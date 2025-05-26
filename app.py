@@ -27,7 +27,7 @@ if check_password():
 
     df = pd.read_excel("datos_clientes.xlsx")
 
-    st.title("Resumen - DEMO ALFA FAKE GA")
+    st.title("Resumen - DEMO ALFA FAKE GA V2V2V2V")
 
     st.subheader("♫♫ Datos Completos")
     st.dataframe(df)
