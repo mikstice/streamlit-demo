@@ -5,15 +5,15 @@ import matplotlib as plt
 
 def check_password():
     def password_entered():
-        if st.session_state.password == "mipass123":
-            st.session_state.password_correct = True
+        if st.session_state.["password"] == "mipass123":
+            st.session_state.["password_correct"] = True
         else:
-            st.session_state.password_correct = False
+            st.session_state.["password_correct"] = False
 
     if "password_correct" not in st.session_state:
-        st.session_state.password_correct = False
+        st.session_state.["password_correct"] = False
 
-    if not st.session_state.password_correct:
+    if not st.session_state.["password_correct"]:
         st.text_input(
             "Ingrese contraseña:",
             type="password",
