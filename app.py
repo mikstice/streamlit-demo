@@ -5,7 +5,7 @@ import matplotlib as plt
 
 def check_password():
     def password_entered():
-        if st.session_state.["password"] == "mipass123":
+        if st.session_state["password"] == "mipass123":
             st.session_state["password_correct"] = True
         else:
             st.session_state["password_correct"] = False
