@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 
 def check_password():
     def password_entered():
+        st.session_state["password_attempted"] = True
         if st.session_state["password"] == "mipass123":
             st.session_state["password_correct"] = True
         else:
@@ -12,6 +13,8 @@ def check_password():
 
     if "password_correct" not in st.session_state:
         st.session_state["password_correct"] = False
+    if "password_attempted" not in st.session_state:
+        st.session_state["password_attempted"] = False
 
     if not st.session_state["password_correct"]:
         st.text_input(
@@ -20,11 +23,14 @@ def check_password():
             key="password",
             on_change=password_entered
         )
+        if st.session_state["password_attempted"] and not st.session_state["password_correct"]:
+            st.error("Contraseña incorrecta")
         st.stop()
+    return True
 
 
 if check_password():
-
+    print("ingresó correctamente la pass")
     df = pd.read_excel("datos_clientes.xlsx")
 
     st.title("Resumen - DEMO ALFA FAKE GA V2V2V2V")
@@ -44,3 +50,4 @@ if check_password():
     ax.pie(resumen["MONTO"], labels=resumen["CLIENTE"], autopct='%1.1f%%', startangle=90)
     ax.axis('equal')
     st.pyplot(fig)
+
